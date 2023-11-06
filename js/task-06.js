@@ -1,9 +1,22 @@
-const validationInput = document.querySelector("#validation-input");
+const body = document.querySelector("body");
 
-validationInput.addEventListener("blur", function () {
-  if (validationInput.dataset.length === 6) {
-    validationInput.classList.toggle("valid");
-  } else {
-    validationInput.classList.toggle("invalid");
+const input = body.querySelector("#validation-input");
+let value = input.value;
+input.addEventListener("blur", checkInput);
+
+function checkInput() {
+  let value = input.value;
+  if (
+    [...value].length < input.getAttribute("data-length", 6) ||
+    [...value].length > input.getAttribute("data-length", 6)
+  ) {
+    input.classList.add("invalid");
   }
-});
+  if ([...value].length == input.getAttribute("data-length", 6)) {
+    if (input.classList.contains("invalid")) {
+      input.classList.replace("invalid", "valid");
+    } else {
+      input.classList.add("valid");
+    }
+  }
+}
