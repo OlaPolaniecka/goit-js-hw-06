@@ -7,9 +7,13 @@ const ingredients = [
   "Condiments",
 ];
 const list = document.querySelector("#ingredients");
+const elements = document.createDocumentFragment();
 
 for (let i = 0; i < ingredients.length; i++) {
   let items = document.createElement("li");
   items.textContent = ingredients[i];
-  list.append(items);
+  items.classList.add("item");
+  elements.appendChild(items);
 }
+
+list.appendChild(elements);

@@ -10,7 +10,8 @@ function handleSubmit(event) {
 
   if (email.value === "" || password.value === "") {
     alert("Proszę uzupełnić wszystkie pola");
+  } else {
+    console.log({ email: email.value, password: password.value });
+    registerForm.reset();
   }
-  console.log({ email: email.value, password: password.value });
-  registerForm.reset();
 }
